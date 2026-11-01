@@ -1,0 +1,70 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n';
+import { skillCategories, certifications } from '../data/skills';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const levelColors = {
+  advanced: 'text-primary border-primary',
+  intermediate: 'text-accent border-accent',
+  basic: 'text-light border-light',
+};
+---
+
+<section id="skills" class="py-20 px-4 bg-dark/50">
+  <div class="container mx-auto max-w-6xl">
+    <h2 class="section-title">{t('skills.title')}</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      {Object.entries(skillCategories).map(([key, category]) => (
+        <div class="retro-card">
+          <h3 class="text-accent font-pixel text-sm mb-6">
+            {t(`skills.${category.title}`)}
+          </h3>
+          
+          <div class="flex flex-wrap gap-2">
+            {category.items.map((skill) => (
+              <span class={`badge-tech ${levelColors[skill.level]}`}>
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="retro-card max-w-3xl mx-auto">
+      <h3 class="text-accent font-pixel text-sm mb-6 text-center">
+        {t('certifications.title')}
+      </h3>
+      
+      <ul class="space-y-4">
+        {certifications.map((cert) => (
+          <li class="flex flex-col md:flex-row md:items-center md:justify-between border-b border-light/20 pb-3">
+            <div>
+              <p class="text-light font-bold text-sm">{cert.name[lang]}</p>
+              <p class="text-light/70 text-xs">{cert.issuer}</p>
+            </div>
+            <span class="text-accent text-xs mt-1 md:mt-0">{cert.date}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <div class="flex justify-center gap-6 mt-8 text-xs">
+      <div class="flex items-center gap-2">
+        <span class="w-4 h-4 border-2 border-primary bg-primary/20"></span>
+        <span class="text-light/80">{t('skills.level.advanced')}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-4 h-4 border-2 border-accent bg-accent/20"></span>
+        <span class="text-light/80">{t('skills.level.intermediate')}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-4 h-4 border-2 border-light bg-light/20"></span>
+        <span class="text-light/80">{t('skills.level.basic')}</span>
+      </div>
+    </div>
+  </div>
+</section>
