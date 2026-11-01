@@ -1,0 +1,94 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="community" class="py-20 px-4">
+  <div class="container mx-auto max-w-6xl">
+    <h2 class="section-title">{t('community.title')}</h2>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <article class="retro-card">
+        <div class="mb-4">
+          <div class="w-24 h-24 mx-auto mb-4 bg-accent/20 border-4 border-accent flex items-center justify-center">
+            <span class="text-4xl">🎮</span>
+          </div>
+        </div>
+        
+        <h3 class="text-primary font-pixel text-base mb-3 text-center">
+          {t('community.gdupn.title')}
+        </h3>
+        
+        <p class="text-light/90 text-sm mb-3 text-center">
+          {t('community.gdupn.description')}
+        </p>
+        
+        <p class="text-light/70 text-xs text-center">
+          {t('community.gdupn.details')}
+        </p>
+      </article>
+      
+      <article class="retro-card">
+        <h3 class="text-primary font-pixel text-base mb-3">
+          {t('community.spooky.title')}
+        </h3>
+        
+        <p class="text-accent text-sm mb-3">
+          {t('community.spooky.date')}
+        </p>
+        
+        <p class="text-light/90 text-sm mb-4">
+          {t('community.spooky.description')}
+        </p>
+        
+        <p class="text-light/80 text-sm mb-3">
+          <strong>{t('community.spooky.stats')}</strong>
+        </p>
+        
+        <p class="text-light/70 text-xs mb-4">
+          {t('community.spooky.partners')}
+        </p>
+        
+        <div class="flex gap-4">
+          <a 
+            href="https://lnkd.in/dGJ6Dnq9" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent text-xs font-bold hover:underline"
+          >
+            📹 Reel 1
+          </a>
+          <a 
+            href="https://lnkd.in/dUzmkRmr" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent text-xs font-bold hover:underline"
+          >
+            📹 Reel 2
+          </a>
+        </div>
+      </article>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <div class="border-4 border-primary overflow-hidden">
+        <img 
+          src="/spooky-grupo.webp" 
+          alt="Spooky Game Dev UPN 2026 - Foto grupal"
+          class="w-full h-auto"
+          loading="lazy"
+        />
+      </div>
+      <div class="border-4 border-primary overflow-hidden">
+        <img 
+          src="/spooky-equipo.webp" 
+          alt="Spooky Game Dev UPN 2026 - Equipo organizador"
+          class="w-full h-auto"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>

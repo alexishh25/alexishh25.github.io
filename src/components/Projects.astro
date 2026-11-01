@@ -1,0 +1,116 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n';
+import { projects } from '../data/projects';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="projects" class="py-20 px-4">
+  <div class="container mx-auto max-w-6xl">
+    <h2 class="section-title">{t('projects.title')}</h2>
+    
+    <div class="flex justify-center gap-4 mb-12 flex-wrap">
+      <button data-filter="all" class="filter-btn active pixel-button text-primary">
+        {t('projects.filter.all')}
+      </button>
+      <button data-filter="game" class="filter-btn pixel-button text-accent">
+        {t('projects.filter.games')}
+      </button>
+      <button data-filter="software" class="filter-btn pixel-button text-light">
+        {t('projects.filter.software')}
+      </button>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => (
+        <article class={`retro-card project-card`} data-category={project.category}>
+          <div class="mb-4">
+            {project.image ? (
+              <img src={project.image} alt={project.title} class="w-full h-48 object-cover" />
+            ) : (
+              <div class="placeholder-project">
+                {t('projects.placeholder')}
+              </div>
+            )}
+          </div>
+          
+          <h3 class="text-primary font-pixel text-sm mb-3">{project.title}</h3>
+          
+          <p class="text-light/80 text-sm mb-4 leading-relaxed">
+            {project.description[lang]}
+          </p>
+          
+          <div class="flex flex-wrap gap-1 mb-4">
+            {project.tech.slice(0, 4).map((tech) => (
+              <span class="badge-tech">{tech}</span>
+            ))}
+            {project.tech.length > 4 && (
+              <span class="badge-tech">+{project.tech.length - 4}</span>
+            )}
+          </div>
+          
+          <div class="flex gap-3 flex-wrap">
+            {project.demo && (
+              <a 
+                href={project.demo} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-accent text-sm font-bold hover:underline"
+              >
+                {t('projects.view')}
+              </a>
+            )}
+            {project.repo && (
+              <a 
+                href={project.repo} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="text-light text-sm font-bold hover:underline"
+              >
+                {t('projects.repo')}
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+            card.classList.add('animate-in');
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .filter-btn.active {
+    background-color: currentColor;
+    color: var(--color-secondary);
+  }
+  
+  .project-card {
+    transition: all 0.3s ease;
+  }
+</style>

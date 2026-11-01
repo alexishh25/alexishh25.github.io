@@ -1,0 +1,91 @@
+---
+import { getLangFromUrl, useTranslations, languages } from '../i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-secondary/95 border-b-4 border-primary backdrop-blur-sm">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between flex-wrap gap-4">
+      <a href={`/${lang === 'en' ? 'en' : ''}`} class="text-primary font-pixel text-lg hover:text-accent transition-colors">
+        DEKSZX
+      </a>
+      
+      <div class="flex items-center gap-6 flex-wrap">
+        <a href={`/${lang === 'en' ? 'en' : ''}#projects`} class="nav-link">{t('nav.projects')}</a>
+        <a href={`/${lang === 'en' ? 'en' : ''}#experience`} class="nav-link">{t('nav.experience')}</a>
+        <a href={`/${lang === 'en' ? 'en' : ''}#community`} class="nav-link">{t('nav.community')}</a>
+        <a href={`/${lang === 'en' ? 'en' : ''}#skills`} class="nav-link">{t('nav.skills')}</a>
+        <a href={`/${lang === 'en' ? 'en' : ''}#contact`} class="nav-link">{t('nav.contact')}</a>
+        
+        <div class="flex gap-2">
+          <a 
+            href="/" 
+            class={`lang-btn ${lang === 'es' ? 'active' : ''}`}
+            aria-label="Español"
+          >
+            ES
+          </a>
+          <a 
+            href="/en" 
+            class={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+            aria-label="English"
+          >
+            EN
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-light);
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+  
+  .lang-btn {
+    font-family: var(--font-pixel);
+    font-size: 0.625rem;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--color-primary);
+    background-color: transparent;
+    color: var(--color-light);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .lang-btn:hover {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+  }
+  
+  .lang-btn.active {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+  }
+  
+  @media (max-width: 768px) {
+    nav > div {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .nav-link {
+      font-size: 0.75rem;
+    }
+  }
+</style>
