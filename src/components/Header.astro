@@ -6,34 +6,37 @@ const t = useTranslations(lang);
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-secondary/95 border-b-4 border-primary backdrop-blur-sm">
-  <nav class="container mx-auto px-4 py-4">
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-secondary/80 border-b border-border">
+  <nav class="container-dashboard py-4">
     <div class="flex items-center justify-between flex-wrap gap-4">
-      <a href={`/${lang === 'en' ? 'en' : ''}`} class="text-primary font-pixel text-lg hover:text-accent transition-colors">
-        DEKSZX
+      <a href={`/${lang === 'es' ? 'es' : ''}`} class="group flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+          <span class="text-white font-pixel text-xs">D</span>
+        </div>
+        <span class="text-primary font-pixel text-base hidden sm:inline">DEKSZX</span>
       </a>
       
       <div class="flex items-center gap-6 flex-wrap">
-        <a href={`/${lang === 'en' ? 'en' : ''}#projects`} class="nav-link">{t('nav.projects')}</a>
-        <a href={`/${lang === 'en' ? 'en' : ''}#experience`} class="nav-link">{t('nav.experience')}</a>
-        <a href={`/${lang === 'en' ? 'en' : ''}#community`} class="nav-link">{t('nav.community')}</a>
-        <a href={`/${lang === 'en' ? 'en' : ''}#skills`} class="nav-link">{t('nav.skills')}</a>
-        <a href={`/${lang === 'en' ? 'en' : ''}#contact`} class="nav-link">{t('nav.contact')}</a>
+        <a href={`/${lang === 'es' ? 'es' : ''}#projects`} class="nav-link">{t('nav.projects')}</a>
+        <a href={`/${lang === 'es' ? 'es' : ''}#experience`} class="nav-link">{t('nav.experience')}</a>
+        <a href={`/${lang === 'es' ? 'es' : ''}#community`} class="nav-link">{t('nav.community')}</a>
+        <a href={`/${lang === 'es' ? 'es' : ''}#skills`} class="nav-link">{t('nav.skills')}</a>
+        <a href={`/${lang === 'es' ? 'es' : ''}#contact`} class="nav-link">{t('nav.contact')}</a>
         
-        <div class="flex gap-2">
+        <div class="flex gap-2 ml-4 border-l border-border pl-4">
           <a 
             href="/" 
-            class={`lang-btn ${lang === 'es' ? 'active' : ''}`}
-            aria-label="Español"
-          >
-            ES
-          </a>
-          <a 
-            href="/en" 
             class={`lang-btn ${lang === 'en' ? 'active' : ''}`}
             aria-label="English"
           >
             EN
+          </a>
+          <a 
+            href="/es" 
+            class={`lang-btn ${lang === 'es' ? 'active' : ''}`}
+            aria-label="Español"
+          >
+            ES
           </a>
         </div>
       </div>
@@ -43,49 +46,72 @@ const currentPath = Astro.url.pathname;
 
 <style>
   .nav-link {
-    font-family: var(--font-body);
     font-size: 0.875rem;
     color: var(--color-light);
     text-decoration: none;
-    padding: 0.5rem;
-    transition: color 0.2s ease;
-    text-transform: uppercase;
-    font-weight: 700;
+    padding: 0.5rem 0.75rem;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    position: relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 2px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
   }
   
   .nav-link:hover {
     color: var(--color-primary);
   }
   
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+  
   .lang-btn {
     font-family: var(--font-pixel);
-    font-size: 0.625rem;
-    padding: 0.5rem 0.75rem;
-    border: 2px solid var(--color-primary);
+    font-size: 0.6rem;
+    padding: 0.5rem 0.875rem;
+    border: 2px solid var(--color-border);
     background-color: transparent;
     color: var(--color-light);
     text-decoration: none;
     transition: all 0.2s ease;
+    border-radius: 6px;
   }
   
   .lang-btn:hover {
     background-color: var(--color-primary);
+    border-color: var(--color-primary);
     color: var(--color-light);
   }
   
   .lang-btn.active {
     background-color: var(--color-primary);
+    border-color: var(--color-primary);
     color: var(--color-secondary);
   }
   
   @media (max-width: 768px) {
     nav > div {
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
     }
     
     .nav-link {
       font-size: 0.75rem;
+      padding: 0.5rem;
+    }
+    
+    .nav-link::after {
+      left: 0.5rem;
+      right: 0.5rem;
     }
   }
 </style>

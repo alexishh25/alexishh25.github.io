@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Projects from '../../components/Projects.astro';
+import Experience from '../../components/Experience.astro';
+import Community from '../../components/Community.astro';
+import Skills from '../../components/Skills.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = 'Alexis Herencia - Gameplay & UI Programmer | Software Developer';
+const description = 'Estudiante de Ingeniería de Sistemas en la UPN, especializado en desarrollo de videojuegos (Unity/C#) y sistemas empresariales. Portafolio de proyectos y experiencia.';
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  <main>
+    <Hero />
+    <Projects />
+    <Experience />
+    <Community />
+    <Skills />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
