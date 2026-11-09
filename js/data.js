@@ -209,7 +209,7 @@ window.PORTFOLIO = {
       {
         title: 'Megaman X Project', tag: 'C#', art: 'platformer', year: '2025',
         repo: 'https://github.com/alexishh25/Megaman-X-Project',
-        tech: ['C#', 'Platformer', 'Game feel'],
+        tech: ['C#', 'Platformer', 'Monogame'],
         es: { role: 'Fan project', text: 'Proyecto inspirado en la saga Mega Man X para estudiar mecánicas clásicas de plataformas y física de movimiento.' },
         en: { role: 'Fan project', text: 'A project inspired by the Mega Man X series to study classic platformer mechanics and movement physics.' },
       },
@@ -388,18 +388,18 @@ window.PORTFOLIO = {
   // Común a ambos perfiles
   community: {
     es: {
-      gdupn: { title: 'Líder de GDUPN', text: 'Comunidad de desarrollo de videojuegos de la UPN Los Olivos. Equipo de 3 personas, con eventos y talleres organizados.' },
+      gdupn: { title: 'Líder de GDUPN', text: 'Comunidad de desarrollo de videojuegos de la UPN Los Olivos. Equipo de 12 personas, con eventos y talleres organizados.' },
       spooky: {
         title: 'Spooky Game Dev UPN 2026', date: '30 de octubre, 2026',
-        text: 'Organizador principal del evento de desarrollo de videojuegos, en colaboración con LEAD UPN, Darkvoid Studios y Game Jam Plus.',
+        text: 'Organizador principal del evento de desarrollo de videojuegos, en colaboración con LEAD UPN.',
         stats: [{ v: '~30', k: 'asistentes' }, { v: '4', k: 'equipos' }, { v: '3', k: 'aliados' }],
       },
     },
     en: {
-      gdupn: { title: 'GDUPN Leader', text: 'Game development community at UPN Los Olivos. A 3-person team organizing events and workshops.' },
+      gdupn: { title: 'GDUPN Leader', text: 'Game development community at UPN Los Olivos. A 12-person team organizing events and workshops.' },
       spooky: {
         title: 'Spooky Game Dev UPN 2026', date: 'October 30, 2026',
-        text: 'Lead organizer of the game development event, in collaboration with LEAD UPN, Darkvoid Studios and Game Jam Plus.',
+        text: 'Lead organizer of the game development event, in collaboration with LEAD UPN.',
         stats: [{ v: '~30', k: 'attendees' }, { v: '4', k: 'teams' }, { v: '3', k: 'partners' }],
       },
     },
