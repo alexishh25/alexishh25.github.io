@@ -6,7 +6,6 @@ window.PORTFOLIO = {
     email: 'alexisherencia25@gmail.com',
     linkedin: 'https://www.linkedin.com/in/alexis-javier-jesus-herencia-huaracha-570814261/',
     github: 'https://github.com/alexishh25',
-    cv: 'assets/cv-alexis-herencia.pdf',
   },
 
   ui: {
@@ -14,7 +13,6 @@ window.PORTFOLIO = {
       nav: { about: 'Perfil', path: 'Trayectoria', projects: 'Proyectos', skills: 'Skills', community: 'Comunidad', contact: 'Contacto' },
       modeGame: 'GAME DEV', modeWeb: 'WEB DEV',
       switchHint: 'Cambia de perfil',
-      cv: 'Descargar CV',
       viewProjects: 'Ver proyectos',
       repo: 'Código', demo: 'Demo', private: 'Privado / en equipo',
       present: 'Actualidad',
@@ -26,7 +24,6 @@ window.PORTFOLIO = {
       nav: { about: 'Profile', path: 'Journey', projects: 'Projects', skills: 'Skills', community: 'Community', contact: 'Contact' },
       modeGame: 'GAME DEV', modeWeb: 'WEB DEV',
       switchHint: 'Switch profile',
-      cv: 'Download CV',
       viewProjects: 'View projects',
       repo: 'Code', demo: 'Demo', private: 'Private / team project',
       present: 'Present',
