@@ -69,7 +69,6 @@
     $('#lang').setAttribute('aria-label', l === 'es' ? 'Switch to English' : 'Cambiar a español');
     $('#switch').setAttribute('aria-checked', String(m === 'web'));
     $('#switch').setAttribute('aria-label', UI.switchHint);
-    $('#cv-link').href = D.links.cv;
 
     // Social
     $('#social').innerHTML = [
